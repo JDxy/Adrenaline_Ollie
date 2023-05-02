@@ -13,7 +13,7 @@ if (isset($_POST["send"])) {
     } else {
       $lista = array($producto);
     }
-    setcookie('email', json_encode($lista), time() + 86400 * 30); // la cookie expirará en 30 días
+    setcookie('TROLLEY_OF:{$_POST["email"]}', json_encode($lista), time() + 86400 * 30); // la cookie expirará en 30 días
   } else {
     $url = 'start_session.php';
     echo '<meta http-equiv="refresh" content="0;url='.$url.'">';
