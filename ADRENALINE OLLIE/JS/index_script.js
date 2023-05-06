@@ -15,16 +15,23 @@ function showSlides() {
   setTimeout(showSlides, 3000); // Cambiar imagen cada 3 segundos
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  const aviso = document.getElementById("aviso");
+  const cerrar = document.getElementById("cerrar");
 
+  function mostrarAviso() {
+    aviso.style.display = "flex";
+  }
 
-function updatemenu() {
-    if (document.getElementById('responsive-menu').checked == true) {
-      document.getElementById('menu').style.borderBottomRightRadius = '0';
-      document.getElementById('menu').style.borderBottomLeftRadius = '0';
-    }else{
-      document.getElementById('menu').style.borderRadius = '10px';
-    }
-}
+  function cerrarAviso() {
+    aviso.style.display = "none";
+  }
+
+  setTimeout(mostrarAviso, 2000); // muestra el aviso después de 2 segundos
+
+  cerrar.addEventListener("click", cerrarAviso);
+});
+
 
 
   
