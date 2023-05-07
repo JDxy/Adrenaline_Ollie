@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: var(--first-color);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.producto {
+    height: 550px;
+    width: 300px;
+    margin: 20px;
+    background-color: #F1F1F1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    border: 2px inset rgba(0, 0, 0, 1);
+    border-radius: 32px;
+    /* background: linear-gradient(
+      55deg,
+      rgba(84, 240, 193, 1) 31%,
+      rgba(7, 179, 179, 1) 91%
+    ); */
+    background-blend-mode: normal;
+    box-shadow: inset 1px 1px 52px 0px rgba(158, 74, 74, 0.3);
+  
+}
+
+.producto img {
+    width: 150px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+
+.productos {
+    margin-top: 100px;
+}
+.myButton {
+    width: 100px;
+	box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+	background-color:#b8e356;
+	border-radius:6px;
+	border:1px solid #83c41a;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #86ae47;
+}
+.myButton:hover {
+	background-color:#a5cc52;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+/*  */
+
+/*  */
+.modal-overlay.activo {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  
+.modal-overlay {
+    visibility:hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+ 
+    width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal h2 {
+    margin-top: 0;
+  }
+  
+  .modal form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal label {
+    margin-bottom: 10px;
+  }
+  
+  .modal input[type="text"],
+  .modal input[type="number"],
+  .modal input[type="date"],
+  .modal input[type="email"],
+  .modal input[type="password"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .modal button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
