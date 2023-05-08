@@ -7,30 +7,19 @@
   <title>Document</title>
   <link rel="stylesheet" href="CSS/index_style.css">
   <link rel="stylesheet" href="CSS/menu&footer_style.css">
-  <script>
+  <!-- <script>
   window.onload = function() {
     setTimeout(function(){
       document.getElementById('aviso').style.display = 'none';
       document.body.style.display = 'block';
-    }, 1000);
+    }, 500);
   }
 
-</script>
+</script> -->
 </head>
 <?php
   require_once 'PHP/parts/header.php';
 ?>
-    <div id="aviso" class="aviso">
-    <div class="modal">
-      <h2>Aviso cookies</h2>
-      <p>Utilizamos cookies para mejorar tu experiencia en nuestra página web. Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas nuestro sitio. Estas cookies nos permiten recordar tus preferencias, analizar el uso del sitio y mejorar la calidad de nuestros servicios.
-      <br></br>
-      Al utilizar nuestro sitio web, aceptas el uso de cookies de acuerdo con nuestra Política de cookies. Si no estás de acuerdo con el uso de cookies, puedes desactivarlas en la configuración de tu navegador o abandonar nuestro sitio web.
-      <br></br>
-      Si tienes alguna pregunta o inquietud sobre nuestra Política de cookies, por favor contáctanos.</p>
-      <button id="cerrar">Entendido</button>
-    </div>
-    </div>
     <header>
       <h1>ADRENALINE OLLIE</h1>
     </header>
@@ -66,7 +55,7 @@
 
         <img class="main-img" src="ASSETS/IMG/INDEX/best-skateboard-brands-decks-trucks-wheels.jpg" alt="">
     </section>
-
+    <!-- <script src="index_script.js"></script> -->
 <?php
   require_once 'PHP/parts/footer.php';
 ?>

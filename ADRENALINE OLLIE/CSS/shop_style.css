@@ -19,11 +19,7 @@ body{
     ); */
 }
 
-@media (max-width: 800px) {
-    nav {
-        margin-left: -50%;
-    }
-}
+
 
 h2 {
     text-align: center;

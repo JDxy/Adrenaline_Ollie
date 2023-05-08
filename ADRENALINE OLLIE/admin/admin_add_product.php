@@ -22,7 +22,14 @@
     <h1>Añadir producto</h1>
     <input type="text" name="name_nombre" id="id_nombre" placeholder="nombre" required>
     <input type="text" name="name_imagen" id="id_imagen" placeholder="imagen" required>
-    <input type="text" name="name_tipo" id="id_tipo" placeholder="tipo" required>
+    <label for="name_tipo" >tipo de producto</label>
+    <select name="name_tipo" id="id_tipo">
+      <option value="TABLA">Tabla</option>
+      <option value="RUEDAS">Ruedas</option>
+      <option value="RODAMIENTOS">Rodamientos</option>
+      <option value="TRUCKS">Trucks</option>
+      <option value="SKATE">skate</option>
+    </select>
 
     <input type="text" name="name_precio" id="id_precio" placeholder="precio" required>
     <input type="text" name="name_stock" id="id_stock" placeholder="stock" required>

@@ -1,7 +1,7 @@
 <?php
 require_once 'PHP/parts/header.php';
-require 'PHP/class/class_shop.php';
-$sh = new Shop();
+
+
 
 if (isset($_POST["send"])) {
   if ($_POST["email"] != "") {
@@ -20,7 +20,7 @@ if (isset($_POST["send"])) {
       $lista = array($producto);
     }
     
-    setcookie('trolley', json_encode($lista), time() + 86400 * 30); // la cookie expirará en 30 días
+    setcookie('trolley', json_encode($lista), time()+3600); 
   } else {
     $url = 'start_session.php';
     echo '<meta http-equiv="refresh" content="0;url='.$url.'">';
@@ -61,6 +61,7 @@ if (isset($_POST["send"])) {
 ?>
 
 <div class="productos">
+</div>
 
 <!-- Sección para los skates -->
 <h2>Skates</h2>
@@ -112,17 +113,35 @@ if (isset($_POST["send"])) {
 ?>
 
 <script>
-const modal = document.querySelector('.modal-overlay');
-const abrirModalBtn = document.getElementById('abrir-modal');
-const cerrarModalBtn = document.querySelector('.modal button[type="button"]');
 
-abrirModalBtn.addEventListener('click', () => {
-  modal.classList.add('activo');
+const modales = document.querySelectorAll('.modal-overlay');
+const abrirModalBtns = document.querySelectorAll('.abrir-modal');
+const cerrarModalBtns = document.querySelectorAll('.modal button[type="button"]');
+
+abrirModalBtns.forEach((abrirModalBtn, index) => {
+  abrirModalBtn.addEventListener('click', () => {
+    modales[index].classList.add('activo');
+  });
 });
 
-cerrarModalBtn.addEventListener('click', () => {
-  modal.classList.remove('activo');
+cerrarModalBtns.forEach((cerrarModalBtn, index) => {
+  cerrarModalBtn.addEventListener('click', () => {
+    modales[index].classList.remove('activo');
+  });
 });
+
+
+// const modal = document.querySelectorAll('.modal-overlay');
+// const abrirModalBtn = document.getElementById('abrir-modal');
+// const cerrarModalBtn = document.querySelectorAll('.modal button[type="button"]');
+
+// abrirModalBtn.addEventListener('click', () => {
+//   modal.classList.add('activo');
+// });
+
+// cerrarModalBtn.addEventListener('click', () => {
+//   modal.classList.remove('activo');
+// });
 
 </script>
 
@@ -136,41 +155,7 @@ if(isset($_COOKIE['trolley'])) {
   // Hacer algo con $lista
 }
 
-// if (isset($_POST["send"])) {
-
-//     if ($_POST["email"] != "") {
-      
-//       $lista = [$_POST["email"], [$_POST["ID_producto"], $_POST["Img_producto"], $_POST["Nombre_producto"], $_POST["precio"]]]
-
-      
-//     }else {
-//       $url = 'start_session.php';
-//       echo '<meta http-equiv="refresh" content="0;url='.$url.'">';
-//     }
-//   }
-
-  // if (isset($_POST["send"])) {
-  //   if ($_POST["email"] != "") {
-  //     $email = $_POST["email"];
-  //     $producto = [$_POST["ID_producto"], $_POST["Img_producto"], $_POST["Nombre_producto"], $_POST["precio"]];
-  //     if (isset($_COOKIE[$email])) {
-  //       $lista = json_decode($_COOKIE[$email], true);
-  //       $lista[] = $producto;
-  //     } else {
-  //       $lista = array($producto);
-  //     }
-  //     setcookie($email, json_encode($lista), time() + 86400 * 30); // la cookie expirará en 30 días
-  //   } else {
-  //     $url = 'start_session.php';
-  //     echo '<meta http-equiv="refresh" content="0;url='.$url.'">';
-  //   }
-  // }
-
-
 
  require_once 'PHP/parts/footer.php';
-
-
-
 
 ?>

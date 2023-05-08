@@ -187,31 +187,27 @@ class Shop{
                 $precio = $this->obtain_cost($producto["ID_producto"]);
               
                 echo '<div class=" producto">';
-                echo '<p id="ID_producto" name="'.$producto["ID_producto"].'">' . $producto["ID_producto"] . '</p>';
-                echo '<img src="' . $producto['Img_producto'] . '.PNG" alt="">';
-                echo '<h3>' . $producto['Nombre_producto'] . '</h3>';
-                echo '<p> Precio: </p>';
-                echo '<p id="precio" name="'.$precio.'">' . $precio . '€</p>';
-                echo '<form action="' . $_SERVER['PHP_SELF'] . '" method="post">';
-                echo '<input type="hidden" name="email" value="' . $email . '">';
-                echo '<input type="hidden" name="ID_producto" value="' . $producto['ID_producto'] . '">';
-                echo '<input type="hidden" name="Img_producto" value="' . $producto['Img_producto'] . '">';
-                echo '<input type="hidden" name="Nombre_producto" value="' . $producto['Nombre_producto'] . '">';
-                echo '<input type="hidden" name="precio" value="' . $precio . '">';
-                echo '<input type="submit" value="Añadir al carrito" name="send" class="myButton"></input>';
-                echo "</form>";
-                
-              
-                echo '<button class="myButton" id="abrir-modal">Pagar</button>';
+                    echo '<p id="ID_producto" name="'.$producto["ID_producto"].'">' . $producto["ID_producto"] . '</p>';
+                    echo '<img src="' . $producto['Img_producto'] . '.PNG" alt="">';
+                    echo '<h3>' . $producto['Nombre_producto'] . '</h3>';
+                    echo '<p> Precio: </p>';
+                    echo '<p id="precio" name="'.$precio.'">' . $precio . '€</p>';
+                    echo '<form action="' . $_SERVER['PHP_SELF'] . '" method="post">';
+                    echo '<input type="hidden" name="email" value="' . $email . '">';
+                    echo '<input type="hidden" name="ID_producto" value="' . $producto['ID_producto'] . '">';
+                    echo '<input type="hidden" name="Img_producto" value="' . $producto['Img_producto'] . '">';
+                    echo '<input type="hidden" name="Nombre_producto" value="' . $producto['Nombre_producto'] . '">';
+                    echo '<input type="hidden" name="precio" value="' . $precio . '">';
+                    echo '<input type="submit" value="Añadir al carrito" name="send" class="myButton"></input>';
+                    echo "</form>";
+                    echo '<button class="myButton" id="abrir-modal">Ver mas</button>';
+
                 echo '</div>';
                 echo '
                     <div class="modal-overlay">
                         <div class="modal">
                         
-
-
                         ' . $producto['Img_producto'] . '
-                 
                         <ul>
                         <li><h2>'.$producto['Nombre_producto'].'</h2></li>
                         <li>Precio:
@@ -227,11 +223,8 @@ class Shop{
                         </form>
                         </ul>
                     </div>
-                    </div>
-                    
-                    ';
-               
-                
+                    </div>  
+                    ';              
             }
         }  
     }

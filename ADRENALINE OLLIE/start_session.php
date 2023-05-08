@@ -33,7 +33,7 @@ if (isset($_POST['send'])){
         $img = $sh->select_values("cliente", "img_cliente", "Correo_electronico_cliente = '{$name_email}'");
         $img = $img[0]['img_cliente'];
         $cliente = array('email' => $name_email, 'contrasena' => $name_password, 'img_cliente' => $img);
-        setcookie('cliente', json_encode($cliente), time()+3600, '/');
+        setcookie('cliente', json_encode($cliente), time()+3600);
         $url = 'index.php';
         echo '<meta http-equiv="refresh" content="0;url='.$url.'">';
         exit();

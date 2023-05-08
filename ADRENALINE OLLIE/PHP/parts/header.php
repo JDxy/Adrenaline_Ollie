@@ -1,4 +1,6 @@
 <?php
+require_once 'PHP/class/class_shop.php';
+$sh = new Shop();
 echo '
 <body>
     <nav id="menu">
@@ -22,9 +24,13 @@ echo '<li><a href="http:trolley.php"><img src="../../ASSETS/IMG/INDEX/anadir-a-l
       <li><a href="contact.php">CONTACTANOS</a></li>';
 
       if (isset($_COOKIE["cliente"])) {
-        $cliente = json_decode($_COOKIE["cliente"]);
-      
-        echo '<li><a href="">Tu cuenta <img src="' . $cliente->img_cliente . '"></a></li>';
+        
+        $cliente = json_decode($_COOKIE["cliente"], true);
+        $email = $cliente['email'];
+   
+        $cliente = $sh->select_values('cliente', 'Nombre_cliente', "Correo_electronico_cliente = '$email'");
+        $nombre = $cliente[0]['Nombre_cliente'];
+        echo "<li><a href='user_account.php'>$nombre</a></li>";
     }
     
 
@@ -33,13 +39,5 @@ echo '</ul>
 </body>';
 ?>
 
-<script>
-  var menuItems = document.querySelectorAll("#menu li");
 
-  for (var i = 0; i < menuItems.length; i++) {
-    setTimeout(function(item) {
-      item.style.display = "block";
-    }, i * 300, menuItems[i]);
-  }
-</script>
 

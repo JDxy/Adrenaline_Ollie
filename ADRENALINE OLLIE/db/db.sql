@@ -39,7 +39,6 @@ CREATE TABLE Cliente (
   Correo_electronico_cliente VARCHAR(100) NOT NULL UNIQUE,
   Nombre_cliente VARCHAR(50) NOT NULL,
   Apellido_cliente VARCHAR(50) NOT NULL,
-  Img_cliente VARCHAR(50) NOT NULL,
   Telefono VARCHAR(15) NOT NULL,
   Direccion VARCHAR(255) NOT NULL,
   CONTRASENA VARCHAR(255) NOT NULL,
@@ -77,9 +76,9 @@ VALUES
 INSERT INTO Marca (ID_producto, Marca, Descripcion)
 VALUES 
 (1, 'Marca 1', 'Descripción de la marca 1'),
-(1, 'Marca 2', 'Descripción de la marca 2'),
-(2, 'Marca 3', 'Descripción de la marca 3'),
-(3, 'Marca 1', 'Descripción de la marca 1');
+(2, 'Marca 2', 'Descripción de la marca 2'),
+(3, 'Marca 3', 'Descripción de la marca 3');
+
 
 -- Insertar datos de ejemplo en la tabla Precio
 INSERT INTO Precio (ID_producto, Precio_unitario, Cantidad_disponible)
@@ -89,11 +88,11 @@ VALUES
 (3, 7.75, 200);
 
 -- Insertar datos de ejemplo en la tabla Cliente
-INSERT INTO Cliente (Correo_electronico_cliente, Nombre_cliente, Apellido_cliente, Img_cliente, Telefono, Direccion, CONTRASENA)
+INSERT INTO Cliente (Correo_electronico_cliente, Nombre_cliente, Apellido_cliente, Telefono, Direccion, CONTRASENA)
 VALUES 
-('cliente1@example.com', 'Juan', 'Pérez', 'Img_cliente', '123456789', 'Calle Falsa 123', 'contrasena1'),
-('cliente2@example.com', 'María', 'Gómez', 'Img_cliente', '987654321', 'Avenida Siempre Viva 456', 'contrasena2'),
-('cliente3@example.com', 'Pedro', 'Martínez', 'Img_cliente', '456789123', 'Plaza Mayor 789', 'contrasena3');
+('cliente1@example.com', 'Juan', 'Pérez',  '123456789', 'Calle Falsa 123', 'contrasena1'),
+('cliente2@example.com', 'María', 'Gómez',  '987654321', 'Avenida Siempre Viva 456', 'contrasena2'),
+('cliente3@example.com', 'Pedro', 'Martínez', '456789123', 'Plaza Mayor 789', 'contrasena3');
 
 -- Insertar datos de ejemplo en la tabla Pedido
 INSERT INTO Pedido (ID_producto, Correo_electronico_cliente, Cantidad, Precio_unitario, Fecha_pedido)

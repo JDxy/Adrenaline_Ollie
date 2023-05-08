@@ -1,30 +1,8 @@
 <?php
-  if (isset($_POST["submit"]) AND isset($_COOKIE["trolley"])) {
-    require 'PHP/class/class_shop.php';
-$sh = new Shop();
-$pedido = $sh->show_table("pedido");
-    // obtiene los valores necesarios del carrito
-    $cookie_user = $_COOKIE['cliente'];
-    $user = json_decode($cookie_user, true);
-    
-    $trolley = json_decode($_COOKIE['trolley'], true);
-    $correo_electronico_cliente = $user['email']; // cambiar por el correo electrónico del cliente
-    $fecha_pedido = date('Y-m-d'); // obtiene la fecha actual
-  
-    foreach ($trolley as $producto) {
-      $id_producto = $producto[0]; // el ID del producto se encuentra en el índice 4 del array
-      $cantidad = 1;
-      $precio_unitario = $producto[3];
-  
-      // inserta el producto en la tabla Pedido
-      $sh->insert_value('Pedido', 'ID_producto, Correo_electronico_cliente, Cantidad, Precio_unitario, Fecha_pedido',
-        "{$id_producto}, '{$correo_electronico_cliente}', {$cantidad}, {$precio_unitario}, '{$fecha_pedido}'");
-    }
-  
+  if (isset($_POST["finalizar_transaccion"]) AND isset($_COOKIE["trolley"])) {
     // elimina el carrito
     setcookie('trolley', '', time()-3600);
-    header('Location: ' . $_SERVER['REQUEST_URI']);
-    exit(); // Exit the script after the redirection
+    header('Location: ' . 'shop.php');
   }
 ?>
 <!DOCTYPE html>
@@ -41,6 +19,26 @@ $pedido = $sh->show_table("pedido");
 
 <?php
 require_once 'PHP/parts/header.php';
+if (isset($_POST["finalizar_transaccion"]) AND isset($_COOKIE["trolley"])) {
+ $pedido = $sh->show_table("pedido");
+ // obtiene los valores necesarios del carrito
+ $cookie_user = $_COOKIE['cliente'];
+ $user = json_decode($cookie_user, true);
+ 
+ $trolley = json_decode($_COOKIE['trolley'], true);
+ $correo_electronico_cliente = $user['email']; // cambiar por el correo electrónico del cliente
+ $fecha_pedido = date('Y-m-d'); // obtiene la fecha actual
+
+ foreach ($trolley as $producto) {
+   $id_producto = $producto[0]; // el ID del producto se encuentra en el índice 4 del array
+   $cantidad = 1;
+   $precio_unitario = $producto[3];
+
+   // inserta el producto en la tabla Pedido
+   $sh->insert_value('Pedido', 'ID_producto, Correo_electronico_cliente, Cantidad, Precio_unitario, Fecha_pedido',
+     "{$id_producto}, '{$correo_electronico_cliente}', {$cantidad}, {$precio_unitario}, '{$fecha_pedido}'");
+ }
+}
 // require 'PHP/class/class_shop.php';
 
 // $sh = new Shop();
@@ -140,7 +138,7 @@ function realizarPago() {
 
     echo '<form action="' . $_SERVER["PHP_SELF"] . '" method="post">
 
-    <input type="submit" class="myButton" name="submit" value="Pagar '.$total.'">
+    <input type="submit" class="myButton" name="finalizar_transaccion" value="Pagar '.$total.'">
  
   </form>';
 ?>

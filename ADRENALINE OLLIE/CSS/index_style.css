@@ -70,7 +70,6 @@ header {
     grid-column: 1/4;
     grid-row: 1;
     text-align: center;
-    background-image: url(../ASSETS/IMG/INDEX/33006.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -84,7 +83,7 @@ section {
 }
 
 header h1 {
-    font-size: 50px;
+    font-size: 100px;
     color: var(--second-color);
     font-weight: 900;
     margin-top: 260px;
@@ -92,6 +91,13 @@ header h1 {
 
 }
 
+/* .fondo {
+    background-image: url(../ASSETS/IMG/INDEX/istockphoto-514108866-612x612.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: inset 0px 0px 74px  rgba(0,0,0,0.75);
+} */
 /* MENU */
 /* 
 #menu {
