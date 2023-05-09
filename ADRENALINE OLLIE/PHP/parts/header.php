@@ -20,7 +20,7 @@ if (!isset($_COOKIE["cliente"])) {
     echo '<li><a href="start_session.php">INICIAR SESION</a></li>';
 }
 
-echo '<li><a href="http:trolley.php"><img src="../../ASSETS/IMG/INDEX/anadir-a-la-cesta.png" alt=""></a></li>
+echo '<li><a href="http:trolley.php"><img src="ASSETS/IMG/INDEX/anadir-a-la-cesta.png" alt=""></a></li>
       <li><a href="contact.php">CONTACTANOS</a></li>';
 
       if (isset($_COOKIE["cliente"])) {
@@ -28,7 +28,7 @@ echo '<li><a href="http:trolley.php"><img src="../../ASSETS/IMG/INDEX/anadir-a-l
         $cliente = json_decode($_COOKIE["cliente"], true);
         $email = $cliente['email'];
    
-        $cliente = $sh->select_values('cliente', 'Nombre_cliente', "Correo_electronico_cliente = '$email'");
+        $cliente = $sh->select_values('cliente', 'Nombre_cliente', "WHERE Correo_electronico_cliente = '$email'");
         $nombre = $cliente[0]['Nombre_cliente'];
         echo "<li><a href='user_account.php'>$nombre</a></li>";
     }

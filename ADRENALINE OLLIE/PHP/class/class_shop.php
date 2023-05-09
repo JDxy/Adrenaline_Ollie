@@ -162,9 +162,10 @@ class Shop{
     public function select_values($nombre, $columnas, $condiciones){
         try{
             $sql = "SELECT ".$columnas." FROM ".$nombre;
-            if($condiciones != 'null'){
-                $sql .= " WHERE ".$condiciones;
+            if ($condiciones != 'null'){
+                $sql .= " ".$condiciones;
             }
+
             $query = $this->conn->prepare($sql);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -173,6 +174,7 @@ class Shop{
             echo "Error: " . $e->getMessage();
         }
     }
+    
     
     function show_products($tipos_productos){
         $email = "";
@@ -188,7 +190,7 @@ class Shop{
               
                 echo '<div class=" producto">';
                     echo '<p id="ID_producto" name="'.$producto["ID_producto"].'">' . $producto["ID_producto"] . '</p>';
-                    echo '<img src="' . $producto['Img_producto'] . '.PNG" alt="">';
+                    echo '<img src="' . substr($producto['Img_producto'],3) . '" alt="">';
                     echo '<h3>' . $producto['Nombre_producto'] . '</h3>';
                     echo '<p> Precio: </p>';
                     echo '<p id="precio" name="'.$precio.'">' . $precio . '€</p>';

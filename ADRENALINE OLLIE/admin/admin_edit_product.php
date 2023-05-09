@@ -20,14 +20,26 @@
 
 <form action="<?php $_SERVER["PHP_SELF"]?>" method="post">
     <h1>Editar producto</h1>
+    
     <input type="text" name="name_nombre" id="id_nombre" placeholder="nombre">
-    <input type="text" name="name_imagen" id="id_imagen" placeholder="imagen">
-    <input type="text" name="name_tipo" id="id_tipo" placeholder="tipo">
+
+    <input type="text" name="name_imagen" id="id_imagen" placeholder="imagen" required>
+
+    <label for="name_tipo" >tipo de producto</label>
+    <select name="name_tipo" id="id_tipo">
+      <option value="TABLA">Tabla</option>
+      <option value="RUEDAS">Ruedas</option>
+      <option value="RODAMIENTOS">Rodamientos</option>
+      <option value="TRUCKS">Trucks</option>
+      <option value="SKATE">skate</option>
+    </select>
 
     <input type="text" name="name_precio" id="id_precio" placeholder="precio">
+
     <input type="text" name="name_stock" id="id_stock" placeholder="stock">
 
     <input type="text" name="name_marca" id="id_marca" placeholder="marca">
+
     <input type="text" name="name_descripcion" id="id_descripcion" placeholder="descripcion">
 
     <input class="send" type="submit" name="send" id="id_send" value="Enviar">

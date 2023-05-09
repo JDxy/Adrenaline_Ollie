@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="CSS/register_style.css">
+  <link rel="shortcut icon" href="ASSETS/IMG/INDEX/icons/main-icon.png" type="image/x-icon">
   <link rel="stylesheet" href="CSS/menu&footer_style.css">
 </head>
 <?php

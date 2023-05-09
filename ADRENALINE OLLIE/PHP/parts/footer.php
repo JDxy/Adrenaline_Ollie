@@ -1,11 +1,10 @@
-<?php
-echo '    
+
+  
 
 
 <footer>
 
 <ul>
-    <li>LOGO</li>
     <li>CONTACTOS</li>
     <li>AUTORES</li>
     <li>TERMINOS</li>
@@ -22,5 +21,6 @@ echo '
 <script src="JS/index_script.js"></script>
 
 </body>
-</html>';
-?>
+</html>
+
+

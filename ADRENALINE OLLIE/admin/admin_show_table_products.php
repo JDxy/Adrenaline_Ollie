@@ -42,7 +42,7 @@ session_start();
         echo '<td>' . $producto['ID_producto'] . '</td>';
 
         echo '<td>' . $producto['Nombre_producto'] . '</td>';
-        echo '<td> <img src="' . $producto['Img_producto'] . '.PNG" alt=""></td>';
+        echo '<td> <img src="' . $producto['Img_producto'] . '" alt=""></td>';
         echo '<td>' . $producto['Tipo_producto'] . '</td>';
         echo '</tr>';
     }

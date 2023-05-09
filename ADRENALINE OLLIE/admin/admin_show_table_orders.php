@@ -19,7 +19,6 @@ session_start();
 <form action="<?php $_SERVER["PHP_SELF"]?>" method="post">
 
 <?php
-    $user = $_SESSION['admin_name'];
 
     require '../PHP/class/class_shop.php';
     $sh = new Shop();
@@ -33,7 +32,7 @@ session_start();
         echo '<tr>';
         echo '<td>' . $pedido['ID_PEDIDO'] . '</td>';
         echo '<td>' . $pedido['ID_producto'] . '</td>';
-        echo '<td>' . $pedido['ID_cliente'] . '</td>';
+        echo '<td>' . $pedido['Correo_electronico_cliente'] . '</td>';
         echo '<td>' . $pedido['Cantidad'] . '</td>';
         echo '<td>' . $pedido['Precio_unitario'] . '</td>';
         echo '<td>' . $pedido['Fecha_pedido'] . '</td>';

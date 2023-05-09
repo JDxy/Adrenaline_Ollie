@@ -101,7 +101,7 @@
 		position:fixed;
 		top:0; 
 		background-image: none;
-		color: #444444;
+		color: #f30808;
 	}
 	#menu ul {position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none}
 	#menu ul.sub-menus {width:100%;position:static;}
@@ -109,7 +109,7 @@
 	#menu li {display:block;float:none;width:auto;}
 	#menu input, #menu label {position:absolute;top:0;left:0;display:block}
 	#menu input {z-index:4}
-	#menu input:checked + label {color:rgb(0, 0, 0)}
+	#menu input:checked + label {color:rgb(255, 11, 11)}
 	#menu input:checked + label:before {content:"\00d7"}
 	#menu input:checked ~ ul {display:block}
 }
@@ -170,6 +170,8 @@ footer {
 	width: 100%;
     /* grid-column: 1/4;
     grid-row: 11; */
+
+	
     background-image: url(../ASSETS/IMG/INDEX/istockphoto-514108866-612x612.jpg);
     color: #fffbfb;
     text-align: center;
@@ -186,6 +188,7 @@ footer ul {
 footer ul li {
     margin: 20px;
 }
+
 
 .marcas {
     display: flex;
