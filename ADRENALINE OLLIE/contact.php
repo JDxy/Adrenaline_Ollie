@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="CSS/register_style.css">
+  <link rel="stylesheet" href="CSS/form_style.css">
   <link rel="shortcut icon" href="ASSETS/IMG/INDEX/icons/main-icon.png" type="image/x-icon">
   <link rel="stylesheet" href="CSS/menu&footer_style.css">
 </head>
@@ -14,30 +14,46 @@
 ?>
 
 <form action="<?php $_SERVER["PHP_SELF"] ?>" method="post">
-    <h1>Iniciar sesion</h1>
+    <h1>Contactanos</h1>
+    <input type="text" name="name_nombre" id="id_nombre" placeholder="nombre">
     <input type="text" name="name_email" id="id_email" placeholder="email">
-    <input type="password" name="name_password" id="id_password" placeholder="password"> 
+    <input type="text" name="name_asunto" id="id_asunto" placeholder="asunto">
+    <textarea id="w3review" name="w3review" rows="4" cols="50">
+    </textarea>
+
     <input class="send" name="send" type="submit" id="id_send" value="send">
-    <p>Si no tienes cuenta <a href="register.php">REGISTRATE</a></p>
+  
 </form>
 
 <?php
 if (isset($_POST['send'])){
-    require_once 'PHP/class/class_shop.php';
-    $sh = new Shop();
 
-    $name_email = $_POST['name_email'];
-    $name_password = $_POST['name_password'];
+
+    // Declaración de variables del formulario
+    $nombre = $_POST['name_nombre'];
+    $email = $_POST['name_email'];
+    $asunto = $_POST['name_asunto'];
+    $mensaje = $_POST['w3review'];
     
-    if ($sh->exist_client($name_email, $name_password)){
-        $cliente = array('email' => $name_email, 'contrasena' => $name_password);
-        setcookie('cliente', json_encode($cliente), time()+3600, '/');
-        $url = 'index.php';
-        echo '<meta http-equiv="refresh" content="0;url='.$url.'">';
-        exit();
-    }else{
-        echo "<script>alert('Error al iniciar sesión');</script>";
+    // Datos del email
+    $para = "adrenalineollie@gmail.com";
+    $titulo = $asunto;
+    $header = 'From: ' . $email;
+    $msjCorreo = "Nombre: $nombre\n E-Mail: $email\n Mensaje:\n $mensaje";
+    
+
+
+    if (@mail($para, $titulo, $msjCorreo, $header)) {
+
+    echo "<script language='javascript'>
+    alert('Mensaje enviado, muchas gracias por contactar con nosotros.');
+    </script>";
+    } else {
+        echo 'Falló el envio';
     }
+    
+    
+
 }
 require_once 'PHP/parts/footer.php';
 

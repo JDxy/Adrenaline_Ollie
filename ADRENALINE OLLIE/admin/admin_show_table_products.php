@@ -1,5 +1,26 @@
 <?php
 session_start();
+require '../PHP/class/class_shop.php';
+$sh = new Shop();
+if(isset($_POST["eliminar"])){
+
+  // $sh->delete_element('PRODUCTO', $_POST["eliminar"]);
+
+if ($sh->exist_element('PEDIDO', 'producto', $_POST["eliminar"])){
+
+$sh->delete_element('PEDIDO', 'producto', $_POST["eliminar"]);
+
+};
+
+$sh->delete_element('PRECIO', 'producto', $_POST["eliminar"]);
+
+$sh->delete_element('MARCA', 'producto', $_POST["eliminar"]);
+
+$sh->delete_element('PRODUCTO', 'producto', $_POST["eliminar"]);
+
+header("Refresh: 0");
+
+};
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +44,7 @@ session_start();
   $count = 1;
   // $user = $_SESSION['admin_name'];
   // if (isset($_SESSION['admin_name'])) {
-    require '../PHP/class/class_shop.php';
-    $sh = new Shop();
+
     $productos = $sh->show_table("producto");
     $precio = $sh->show_table("precio");
     $marca = $sh->show_table("marca");
@@ -73,24 +93,7 @@ session_start();
     echo '</table>';
     echo '</div>';
   
-    if(isset($_POST["eliminar"])){
-            // $sh->delete_element('PRODUCTO', $_POST["eliminar"]);
 
-        if ($sh->exist_element('PEDIDO', 'producto', $_POST["eliminar"])){
-
-          $sh->delete_element('PEDIDO', 'producto', $_POST["eliminar"]);
-        
-        };
-
-        $sh->delete_element('PRECIO', 'producto', $_POST["eliminar"]);
-
-        $sh->delete_element('MARCA', 'producto', $_POST["eliminar"]);
-
-        $sh->delete_element('PRODUCTO', 'producto', $_POST["eliminar"]);
-
-        header("Refresh: 0");
-
-    };
     ?>
     </form>
     

@@ -5,7 +5,6 @@
 <footer>
 
 <ul>
-    <li>CONTACTOS</li>
     <li>AUTORES</li>
     <li>TERMINOS</li>
 </ul>

@@ -1,5 +1,5 @@
 <?php
-require_once 'PHP/parts/header.php';
+
 
 if (isset($_POST["send"])) {
   $producto = [$_POST["ID_producto"], $_POST["Img_producto"], $_POST["Nombre_producto"], $_POST["precio"]];
@@ -16,7 +16,7 @@ if (isset($_POST["send"])) {
 
 ?> 
 
-<!DOCTYPE html>+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,26 +29,25 @@ if (isset($_POST["send"])) {
     <link rel="shortcut icon" href="ASSETS/IMG/INDEX/icons/main-icon.png" type="image/x-icon">
 
 </head>
-
-
 <?php
-//https://animista.net/play/basic/shadow-drop-2
-// require_once 'PHP/parts/header.php';
-// require 'PHP/class/class_shop.php';
-?> 
-   <img class="etiqueta" src="ASSETS/IMG/STORE/etiqueta.png" alt="">
+require_once 'PHP/parts/header.php';
+?>
+
+
+
+
+<img class="etiqueta" src="ASSETS/IMG/STORE/etiqueta.png" alt="">
+
 <div class="slider">
+
     <?php
       
       $producto = $sh->select_values('Producto', 'Img_producto', 'ORDER BY ID_producto DESC LIMIT 3');
       foreach ($producto as $key => $value) {
-        echo '<img src="' . substr($value['Img_producto'],3) . '" alt="">';
+        echo '<img src="' . substr($value['Img_producto'],3) . '" alt="" class="slide">';
       }
     ?>
-   
-      <!-- <img src="ASSETS/IMG/INDEX/skates/descarga-removebg-preview.png" alt="" class="slide active">
-      <img src="ASSETS/IMG/INDEX/skates/descarga__1_-removebg-preview.png" alt="" class="slide">
-      <img src="ASSETS/IMG/INDEX/skates/pdc5b02808-7fda-4780-903e-324c75f027f8LGM-removebg-preview.png" alt="" class="slide"> -->
+
   </div>
 
 
@@ -58,26 +57,27 @@ if (isset($_POST["send"])) {
 </div>
 
 <!-- Sección para los skates -->
-<h2>Skates</h2>
+<h2 id="Skates">Skates</h2>
 <section>
+
   <?php
   $sh->show_products('SKATE');
   ?>
 </section>
 
 <!-- Sección para las tablas -->
-<h2>Tablas</h2>
-<section>
+<h2 id="Tablas">Tablas</h2>
 
+<section>
   <?php
     $sh->show_products('TABLA');
   ?>
 </section>
 
 <!-- Sección para las ruedas -->
-<h2>Ruedas</h2>
-<section>
+<h2 id="Ruedas">Ruedas</h2>
 
+<section>
 
   <?php
     $sh->show_products('RUEDAS');
@@ -85,9 +85,9 @@ if (isset($_POST["send"])) {
 </section>
 
 <!-- Sección para los rodamientos -->
-<h2>Rodamientos</h2>
-<section>
+<h2 id="Rodamientos">Rodamientos</h2>
 
+<section>
 
   <?php
     $sh->show_products('RODAMIENTOS');
@@ -95,7 +95,8 @@ if (isset($_POST["send"])) {
 </section>
 
 <!--  Sección para los trucks -->
-<h2>Trucks</h2>
+<h2 id="Trucks">Trucks</h2>
+
 <section>
   <?php
     $sh->show_products('TRUCKS');
@@ -103,28 +104,42 @@ if (isset($_POST["send"])) {
 </section>
 </div>
 
-
 <script>
+// Get all trigger buttons
+var buttons = document.querySelectorAll('[data-modal]');
 
-const modales = document.querySelector('.modal-overlay');
-const abrirModalBtns = document.querySelectorAll('.abrir-modal');
-const cerrarModalBtns = document.querySelectorAll('.modal button[type="button"]');
+// Get all modals
+var modals = document.querySelectorAll('.modal');
 
-abrirModalBtns.forEach((abrirModalBtn, index) => {
-  abrirModalBtn.addEventListener('click', () => {
-    modales[index].classList.add('activo');
+// Get all close buttons
+var closeBtns = document.querySelectorAll('.close');
+
+// Add click event listener to all trigger buttons
+buttons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    var modalId = this.getAttribute('data-modal');
+    var modal = document.getElementById(modalId);
+    modal.style.display = 'block';
   });
 });
 
-cerrarModalBtns.forEach((cerrarModalBtn, index) => {
-  cerrarModalBtn.addEventListener('click', () => {
-    modales[index].classList.remove('activo');
+// Add click event listener to all close buttons
+closeBtns.forEach(function(closeBtn) {
+  closeBtn.addEventListener('click', function() {
+    modals.forEach(function(modal) {
+      modal.style.display = 'none';
+    });
   });
 });
 
-
-
-
+// Add click event listener to window to close modals when clicking outside of them
+window.addEventListener('click', function(event) {
+  if (event.target.classList.contains('modal')) {
+    modals.forEach(function(modal) {
+      modal.style.display = 'none';
+    });
+  }
+});
 </script>
 
 <script src="JS/shop_script.js"></script>

@@ -88,6 +88,10 @@ body{
 /*  */
 
 /*  */
+h1 {
+  margin-top: 50px;
+}
+
 .modal-overlay.activo {
     visibility: visible;
     opacity: 1;
@@ -152,3 +156,6 @@ body{
     cursor: pointer;
   }
   
+  .no_existance {
+    margin-bottom: 700px;
+  }

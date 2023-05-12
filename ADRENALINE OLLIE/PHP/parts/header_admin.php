@@ -12,6 +12,7 @@ echo '
             ?>
 
             <?php
+      
             if (isset($_SESSION['admin_name'])) {
               echo '
               <li><a class="dropdown-arrow">TABLAS</a>

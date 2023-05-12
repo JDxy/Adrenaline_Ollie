@@ -7,12 +7,12 @@
 
       $shop = new Shop();
 
-      if($_FILES['foto']['error'] === 0){
+      // if($_FILES['foto']['error'] === 0){
         // Si el archivo se cargó correctamente, lo movemos a la carpeta deseada
         $nombre_imagen = $_FILES['foto']['name'];
         $url_imagen = "../ASSETS/IMG/PRODUCTOS/".$nombre_imagen;
         move_uploaded_file($_FILES['foto']['tmp_name'], $url_imagen);
-      }
+      // }
 
       // $lista = ["Producto"," Img_producto, Nombre_producto, Tipo_producto ", "'{$_POST["name_imagen"]}','{$_POST["name_nombre"]}','{$_POST["name_tipo"]}'"];
       // $url_imagen = $_POST["name_imagen_url"];
@@ -42,7 +42,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../CSS/register_style.css">
+  <link rel="stylesheet" href="../CSS/form_style.css">
   <link rel="stylesheet" href="../CSS/menu&footer_style.css">
 </head>
 <?php
@@ -54,11 +54,11 @@
     <h1>Añadir producto</h1>
     <input type="text" name="name_nombre" id="id_nombre" placeholder="nombre" required>
     <label for="name_imagen">Imagen</label>
+    
     <img src="" class="img_selected" name="name_imagen" id="img" alt="">
     <input type="hidden" name="name_imagen_url" id="img_url" value="">
-
-
     <input type="file" name="foto" id="foto" accept="image/*" />
+
     <label for="name_tipo" >tipo de producto</label>
     <select name="name_tipo" id="id_tipo">
       <option value="TABLA">Tabla</option>

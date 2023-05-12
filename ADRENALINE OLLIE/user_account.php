@@ -12,7 +12,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi cuenta</title>
-  <link rel="stylesheet" href="CSS/register_style.css">
+  <link rel="stylesheet" href="CSS/form_style.css">
   <link rel="stylesheet" href="CSS/menu&footer_style.css">
   <link rel="shortcut icon" href="ASSETS/IMG/INDEX/icons/main-icon.png" type="image/x-icon">
 </head>
@@ -23,7 +23,7 @@
     $nombre = 'cliente';
     $columnas = 'Correo_electronico_cliente, Nombre_cliente, Apellido_cliente, Telefono, Direccion, CONTRASENA';
     $condiciones = "WHERE Correo_electronico_cliente = '" . json_decode($_COOKIE['cliente'], true)['email'] . "'";
-    
+  
     $cliente = $sh->select_values($nombre, $columnas, $condiciones);
 ?>
 
@@ -40,11 +40,63 @@
         <p>Dirección: <?php echo $cliente[0]['Direccion'] ?></p>
         <p>Contraseña: <?php echo $cliente[0]['CONTRASENA'] ?></p>
     </div>
+    <h2>Compras realizadas</h2>
+    <div class="compras">
+        <?php
+        $correo = $cliente[0]['Correo_electronico_cliente'];
+        $compras = $sh->select_values("Pedido", "*", "WHERE Correo_electronico_cliente = '$correo'");
+        $producto = $sh->select_values("Producto", "*", "WHERE ID_producto = '$correo'");
+        ?>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+             
+                        <th>ID_producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio_unitario</th>
+                        <th>Fecha_pedido</th>
+                        <!-- <th>Acciones</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($compras as $compra) { ;?>
+                        <tr>
+                            
+                            <td><?php echo $compra['ID_producto'] ?></td>
+                            <td><?php echo $compra['Cantidad'] ?></td>
+                            <td><?php echo $compra['Precio_unitario'] ?></td>
+                            <td><?php echo $compra['Fecha_pedido'] ?></td>
+                            <!-- <input type="hidden" name="name_idpedido" value="<?php echo $compra['ID_PEDIDO'] ?>">
+                            <td><input type="submit" name="cancelar" value="Cancelar"></td> -->
+                        </tr>
+                    <?php } ?>
+
+                </tbody>
+            </table>
+        </div>
+    </div>  
+
     <input type="submit" name='send' value="Cerrar sesion">
 </form>
 
 
+
 <?php
+
+if (isset($_POST["cancelar"])) {
+    $id_pedido = $_POST['name_idpedido'];
+    // $sh->delete_element('Pedido','PEDIDO',$id_pedido);
+}
+
+
+
 require_once 'PHP/parts/footer.php';
+
+
+
+// Redirigir al usuario a la página del perfil del cliente después de eliminar la compra
+
+
 
 ?>

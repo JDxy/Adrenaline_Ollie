@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar sesion</title>
-  <link rel="stylesheet" href="CSS/register_style.css">
+  <link rel="stylesheet" href="CSS/form_style.css">
   <link rel="stylesheet" href="CSS/menu&footer_style.css">
   <link rel="shortcut icon" href="ASSETS/IMG/INDEX/icons/main-icon.png" type="image/x-icon">
 </head>
@@ -18,7 +18,7 @@
     <input type="text" name="name_email" id="id_email" placeholder="email">
     <input type="password" name="name_password" id="id_password" placeholder="password"> 
     <input class="send" name="send" type="submit" id="id_send" value="send">
-    <p>Si no tienes cuenta <a href="register.php">REGISTRATE</a></p>
+    <p>Si no tienes cuenta, <a href="register.php">REGISTRATE AQUI</a></p>
 </form>
 
 <?php

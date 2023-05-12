@@ -1,4 +1,4 @@
-<?php
+kk<?php
 
 class Shop{
     private $conn;
@@ -26,18 +26,11 @@ class Shop{
 
     public function delete_element($nombre, $where, $id){
         try{
-
-           
-            // $sql = $this->conn->prepare("DELETE FROM pedido WHERE id_".$nombre." = ".$id.";");
-            // // $sql = $this->conn->prepare("DELETE FROM ".$nombre." WHERE id_".$nombre." = ".$id.";");
-            
-            // $sql->execute();
-            $consulta = "DELETE FROM ".$nombre." WHERE id_".$where." = ".$id.";";
+            $consulta = "DELETE FROM ".$nombre." WHERE ID_".$where." = ".$id.";";
+            ECHO $consulta;
             $sql = $this->conn->prepare($consulta);
-            // echo $consulta;
             $sql->execute();
-            // $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-            // return $result;
+
         }catch(PDOException $e){
             echo "Error: " . $e->getMessage();
         }
@@ -184,12 +177,18 @@ class Shop{
         }
     
         $productos = $this->show_table("producto");
+        
         foreach ($productos as $producto) {
             if ($producto['Tipo_producto'] == $tipos_productos) {
                 $precio = $this->obtain_cost($producto["ID_producto"]);
-              
+                $descripcion = $this->select_values("marca", "Descripcion", "Where ID_producto = {$producto["ID_producto"]};");
+                $cantidad = $this->select_values("precio", "Cantidad_disponible", "Where ID_producto = {$producto["ID_producto"]};");
+                
+                
+                
                 echo '<div class=" producto">';
                     echo '<p id="ID_producto" name="'.$producto["ID_producto"].'">' . $producto["ID_producto"] . '</p>';
+
                     echo '<img src="' . substr($producto['Img_producto'],3) . '" alt="">';
                     echo '<h3>' . $producto['Nombre_producto'] . '</h3>';
                     echo '<p> Precio: </p>';
@@ -202,35 +201,37 @@ class Shop{
                     echo '<input type="hidden" name="precio" value="' . $precio . '">';
                     echo '<input type="submit" value="Añadir al carrito" name="send" class="myButton"></input>';
                     echo "</form>";
-                    echo '<button class="myButton" id="abrir-modal">Ver mas</button>';
+                    // echo  '<input type="submit" class="myButton" value="Ver mas" name="show_modal" id="abrir-modal"></input>';
+                    echo '<button class="myButton" data-modal="modal'.$producto["ID_producto"].'">Ver mas</button>';
 
                 echo '</div>';
+                
                 echo '
-                    <div class="modal-overlay">
-                        <div class="modal">
-                        
-                        ' . $producto['Img_producto'] . '
+
+                <div id="modal'.$producto["ID_producto"].'" class="modal overlay">
+                <div class="modal-content">
+                    <span class="close">X</span>
+                 
                         <ul>
                         <li><h2>'.$producto['Nombre_producto'].'</h2></li>
-                        <li>Precio:
-                        '.$precio.'</li>
+                        <li><img src="'.$producto['Img_producto'].'" alt=""></li>
+                        <li>Precio: '.$precio.'€</li>
                   
-                        <li>Cantidad disponible:</li>
-
+                        <li>Cantidad disponible: 
+                        '.$cantidad[0]["Cantidad_disponible"].'</li>
                      
                         <li>Descripcion:</li>
-                        <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
-
-                        <li><button type="button">Cerrar</button></li>
-                        </form>
+                        <li>'.$descripcion[0]["Descripcion"].'</li>
                         </ul>
-                    </div>
-                    </div>  
-                    ';              
+                   
+                </div>
+                </div>
+                ';   
+       
             }
         }  
     }
-    
+
     
 
 
@@ -249,3 +250,7 @@ class Shop{
 
 
 ?>
+
+
+
+

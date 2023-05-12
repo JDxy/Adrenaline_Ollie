@@ -58,6 +58,14 @@ CREATE TABLE Pedido (
   FOREIGN KEY (Correo_electronico_cliente) REFERENCES Cliente(Correo_electronico_cliente)
 );
 
+CREATE TRIGGER disminuir_stock
+AFTER INSERT ON Pedido
+FOR EACH ROW
+UPDATE Precio
+SET Cantidad_disponible = Cantidad_disponible - NEW.Cantidad
+WHERE ID_producto = NEW.ID_producto;
+
+
 -- Insertar datos de ejemplo en la tabla ADMINISTRADORES
 INSERT INTO ADMINISTRADORES (NOMBRE, EMAIL, CONTRASENA)
 VALUES 
@@ -98,12 +106,13 @@ VALUES
 INSERT INTO Pedido (ID_producto, Correo_electronico_cliente, Cantidad, Precio_unitario, Fecha_pedido)
 VALUES 
 (1, 'cliente1@example.com', 2, 10.50, '2023-04-30'),
-(2, 'cliente1@example.com', 1, 5.99, '2023-05-01'),
-(3, 'cliente3@example.com', 4, 7.75, '2023-05-01');
+(1, 'cliente1@example.com', 1, 5.99, '2023-05-01'),
+(3, 'cliente3@example.com', 4, 7.75, '2023-05-01'),
+(1, 'cliente1@example.com', 1, 5.99, '2023-05-01');
 
 
 SELECT * FROM MARCA;
 SELECT * FROM PRECIO;
 SELECT * FROM Producto;
 SELECT * FROM Pedido;
-SELECT ID_producto FROM pedido WHERE ID_producto = 1;
+SELECT * FROM Cliente;
