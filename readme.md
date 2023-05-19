@@ -9,7 +9,7 @@ Para poder utilizar el sitio web, es necesario tener instalado PHP y XAMPP, así
 1. Inicia XAMPP y activa SQL y Apache.
 1. Dirígete a la carpeta principal de Adrenaline ollie.
 1. Localiza el archivo "installer.php" y ejecútalo en la terminal utilizando el comando "./installer.php".
-1. Finalmente, puedes acceder al archivo de índice del proyecto en la carpeta principal y ejecutarlo, o dirigirte a admin/admin_index.php.
+1. Finalmente, puedes acceder al archivo de índice del proyecto en la carpeta principal o dirigirte a admin/admin_index.php y ejecutarlo.
 
 
 # Contribuciones
